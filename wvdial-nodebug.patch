@@ -1,0 +1,31 @@
+--- wvdial-1.41-p/rules.mk	Sun May 14 22:42:08 2000
++++ wvdial-1.41/rules.mk	Sun May 14 22:53:17 2000
+@@ -39,17 +39,17 @@
+ CXXFLAGS = $(CXXOPTS)
+ LDFLAGS = $(LDOPTS)
+ 
+-ifeq ($(DEBUG),1)
+-CFLAGS += -g -Wall -DDEBUG=1
+-CXXFLAGS +=
+-LDFLAGS += -g
+-else
+-CFLAGS += -g -O6 -DDEBUG=0 -DNDEBUG
+-#CFLAGS += -fomit-frame-pointer  # really evil
+-#CXXFLAGS += -fno-implement-inlines  # causes trouble with egcs 1.0
+-CXXFLAGS += -fno-rtti -fno-exceptions
+-LDFLAGS += -g
+-endif
++#ifeq ($(DEBUG),1)
++#CFLAGS += -g -Wall -DDEBUG=1
++#CXXFLAGS +=
++#LDFLAGS += -g
++#else
++#CFLAGS += -g -O6 -DDEBUG=0 -DNDEBUG
++##CFLAGS += -fomit-frame-pointer  # really evil
++##CXXFLAGS += -fno-implement-inlines  # causes trouble with egcs 1.0
++#CXXFLAGS += -fno-rtti -fno-exceptions
++#LDFLAGS += -g
++#endif
+ 
+ 
+ # we need a default rule, since the 'include' below causes trouble
