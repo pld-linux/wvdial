@@ -10,6 +10,7 @@ Source0:	http://www.worldvisions.ca/wvdial/%{name}-%{version}.tar.gz
 Patch0:		%{name}-libs.patch
 Patch1:		%{name}-type.patch
 Patch2:		%{name}-nodebug.patch
+BuildRequires:	libstdc++-devel
 Requires:	ppp >= 2.3.7
 Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
