@@ -1,0 +1,12 @@
+diff -urN wvdial-1.53.org/src/Makefile wvdial-1.53/src/Makefile
+--- wvdial-1.53.org/src/Makefile	Sat Aug 24 18:50:30 2002
++++ wvdial-1.53/src/Makefile	Sat Aug 24 18:50:39 2002
+@@ -9,7 +9,7 @@
+ wvdial.a: wvdialer.o wvdialtext.o wvmodemscan.o wvpapchap.o wvdialbrain.o \
+ 	wvdialmon.o
+ 
+-LIBS = -L../wvstreams -lwvutils -lwvstreams
++LIBS = -L../wvstreams -lwvutils -lwvstreams -lcrypt
+ 
+ wvdial wvdialconf papchaptest atztest pppmon: wvdial.a
+ 
