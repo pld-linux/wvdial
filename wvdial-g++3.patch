@@ -1,0 +1,42 @@
+diff -urN wvdial.orig/src/streams/wvlog.h wvdial-1.42/src/streams/wvlog.h
+--- wvdial.orig/src/streams/wvlog.h	Wed Mar 15 21:44:53 2000
++++ wvdial-1.42/src/streams/wvlog.h	Wed Jan 23 23:58:10 2002
+@@ -25,7 +25,7 @@
+ // or transmits log messages.
+ class WvLogRcvBase
+ {
+-    friend WvLog;
++    friend class WvLog;
+ protected:
+     const char *appname(const WvLog *log) const;
+     virtual void log(const WvLog *source, int loglevel,
+@@ -43,7 +43,7 @@
+ // to all registered WvLogRcv's.
+ class WvLog : public WvStream
+ {
+-    friend WvLogRcvBase;
++    friend class WvLogRcvBase;
+ public:
+     enum LogLevel {
+ 	Critical = 0,
+diff -urN wvdial.orig/src/utils/wvtask.h wvdial-1.42/src/utils/wvtask.h
+--- wvdial.orig/src/utils/wvtask.h	Thu Mar 16 00:16:38 2000
++++ wvdial-1.42/src/utils/wvtask.h	Wed Jan 23 23:58:18 2002
+@@ -21,7 +21,7 @@
+ 
+ class WvTask
+ {
+-    friend WvTaskMan;
++    friend class WvTaskMan;
+     typedef void TaskFunc(void *userdata);
+     
+     static int taskcount, numtasks, numrunning;
+@@ -53,7 +53,7 @@
+ 
+ class WvTaskMan
+ {
+-    friend WvTask;
++    friend class WvTask;
+     WvTaskList free_tasks;
+     
+     void get_stack(WvTask &task, size_t size);
