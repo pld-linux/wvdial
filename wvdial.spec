@@ -2,12 +2,14 @@ Summary:	A heuristic autodialer for PPP connections.
 Summary(pl):	Heurystyczny "autowydzwaniacz" dla po³±czeñ PPP
 Name:		wvdial
 Version:	1.41
-Release:	3
+Release:	4
 License:	LGPL
 Group:		Networking/Daemons
 Group(pl):	Sieciowe/Demony
 Source0:	http://www.worldvisions.ca/wvdial/%{name}-%{version}.tar.gz
 Patch0:		%{name}-libs.patch
+Patch1:		%{name}-type.patch
+Patch2:		%{name}-nodebug.patch
 Requires:	ppp >= 2.3.7
 Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -29,21 +31,34 @@ wynegocjuje po³±czenie PPP u¿ywaj±c potrzebnych mechanizmów.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
-make PREFIX=%{_prefix}
+make \
+	PREFIX=%{_prefix} \
+	BINDIR=%{_bindir} \
+	MANDIR=%{_mandir} \
+	COPTS="$RPM_OPT_FLAGS" \
+	CXXOPTS="$RPM_OPT_FLAGS -fno-rtti -fno-exceptions -fno-implicit-templates" \
+	LDOPTS="-s"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 make install \
-	PREFIX=${RPM_BUILD_ROOT}%{_prefix} \
-	PPPDIR=${RPM_BUILD_ROOT}%{_sysconfdir}/ppp/peers
+	PREFIX=$RPM_BUILD_ROOT%{_prefix} \
+	BINDIR=$RPM_BUILD_ROOT%{_bindir} \
+	MANDIR=$RPM_BUILD_ROOT%{_mandir} \
+	PPPDIR=$RPM_BUILD_ROOT%{_sysconfdir}/ppp/peers
+
+gzip -9nf $RPM_BUILD_ROOT/%{_mandir}/man1/* README CHANGES ANNOUNCE
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc *.gz
 %attr(0755,root,root)	%{_bindir}/*
 %attr(0644,root,root)	%{_mandir}/man1/*
 %attr(0600,root,daemon) %config %{_sysconfdir}/ppp/peers/wvdial
