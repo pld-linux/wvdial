@@ -2,12 +2,13 @@ Summary:	A heuristic autodialer for PPP connections
 Summary(pl):	Heurystyczny "autowydzwaniacz" dla po³±czeñ PPP
 Name:		wvdial
 Version:	1.42
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Networking/Daemons
 Group(de):	Netzwerkwesen/Server
 Group(pl):	Sieciowe/Serwery
 Source0:	http://www.worldvisions.ca/wvdial/%{name}-%{version}.tar.gz
+Patch0:		%{name}-g++3.patch
 BuildRequires:	libstdc++-devel
 Requires:	ppp >= 2.3.7
 Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -29,6 +30,7 @@ WvDial wynegocjuje po³±czenie PPP u¿ywaj±c potrzebnych mechanizmów.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__make} \
