@@ -6,6 +6,7 @@ Release:	1
 License:	LGPL
 Group:		Networking/Daemons
 Source0:	http://www.worldvisions.ca/wvdial/%{name}-%{version}.tar.gz
+# Source0-md5:	e5432b4812b76e31b37cc10b6df62f5f
 Patch0:		%{name}-make.patch
 URL:		http://open.nit.ca/wvdial/
 BuildRequires:	libstdc++-devel
