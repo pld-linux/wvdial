@@ -5,8 +5,6 @@ Version:	1.42
 Release:	2
 License:	LGPL
 Group:		Networking/Daemons
-Group(de):	Netzwerkwesen/Server
-Group(pl):	Sieciowe/Serwery
 Source0:	http://www.worldvisions.ca/wvdial/%{name}-%{version}.tar.gz
 Patch0:		%{name}-g++3.patch
 BuildRequires:	libstdc++-devel
