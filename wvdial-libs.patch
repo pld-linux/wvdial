@@ -25,17 +25,6 @@ diff -uNr wvdial-1.41/configfile/wvconf.h wvdial-libs/configfile/wvconf.h
 diff -uNr wvdial-1.41/rules.mk wvdial-libs/rules.mk
 --- wvdial-1.41/rules.mk	Wed Oct 20 18:37:00 1999
 +++ wvdial-libs/rules.mk	Fri Jan 28 15:15:50 2000
-@@ -47,8 +47,8 @@
- CFLAGS += -g -O6 -DDEBUG=0 -DNDEBUG
- #CFLAGS += -fomit-frame-pointer  # really evil
- #CXXFLAGS += -fno-implement-inlines  # causes trouble with egcs 1.0
--CXXFLAGS += -fno-rtti -fno-exceptions
--LDFLAGS += -g
-+##CXXFLAGS += -fno-rtti -fno-exceptions # Breaks apps that don't use these flags
-+##LDFLAGS += -g
- endif
- 
- 
 @@ -71,8 +71,8 @@
  #
  # Typical compilation rules.
@@ -56,18 +45,6 @@ diff -uNr wvdial-1.41/rules.mk wvdial-libs/rules.mk
  ../%.a:
  	@echo "Library $@ does not exist!"; exit 1
  
-diff -uNr wvdial-1.41/streams/Makefile wvdial-libs/streams/Makefile
---- wvdial-1.41/streams/Makefile	Wed Oct 20 16:20:13 1999
-+++ wvdial-libs/streams/Makefile	Fri Jan 28 15:15:50 2000
-@@ -6,7 +6,7 @@
- 
- XPATH=.. ../utils
- 
--#LIBS=$(EFENCE)
-+LIBS=$(EFENCE)
- 
- default: all watchtest pipetest clonetest modemtest \
- 		logtest logbuftest syslogtest looptest timetest prototest
 diff -uNr wvdial-1.41/streams/pipetest.cc wvdial-libs/streams/pipetest.cc
 --- wvdial-1.41/streams/pipetest.cc	Wed Oct 20 16:20:13 1999
 +++ wvdial-libs/streams/pipetest.cc	Fri Jan 28 15:15:50 2000
@@ -76,7 +53,7 @@ diff -uNr wvdial-1.41/streams/pipetest.cc wvdial-libs/streams/pipetest.cc
  {
      const char *_av[] = {
 -	"/bin/bash",
-+       argc==2 ? argv[1] : "/bin/bash",
++       argc==2 ? argv[1] : "/bin/sh",
  	NULL
      };
      const char **av = (argc < 2) ? _av : (const char **)(argv + 1);
