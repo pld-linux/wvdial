@@ -36,7 +36,7 @@ wynegocjuje po³±czenie PPP u¿ywaj±c potrzebnych mechanizmów.
 %patch2 -p1
 
 %build
-make \
+%{__make} \
 	PREFIX=%{_prefix} \
 	BINDIR=%{_bindir} \
 	MANDIR=%{_mandir} \
@@ -46,7 +46,7 @@ make \
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install \
+%{__make} install \
 	PREFIX=$RPM_BUILD_ROOT%{_prefix} \
 	BINDIR=$RPM_BUILD_ROOT%{_bindir} \
 	MANDIR=$RPM_BUILD_ROOT%{_mandir} \
