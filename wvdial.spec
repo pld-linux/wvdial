@@ -60,6 +60,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc *.gz
-%attr(0755,root,root)	%{_bindir}/*
-%attr(0644,root,root)	%{_mandir}/man1/*
-%attr(0600,root,daemon) %config %{_sysconfdir}/ppp/peers/wvdial
+%attr(755,root,root) %{_bindir}/*
+%{_mandir}/man1/*
+%config %{_sysconfdir}/ppp/peers/wvdial
