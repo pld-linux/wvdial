@@ -12,7 +12,7 @@ URL:		http://open.nit.ca/wvdial/
 BuildRequires:	libstdc++-devel
 BuildRequires:	wvstreams-devel
 Requires:	ppp >= 2.4.0
-Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 WvDial automatically locates and configures modems and can log into
