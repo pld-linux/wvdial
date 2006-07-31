@@ -9,6 +9,7 @@ Source0:	http://open.nit.ca/download/%{name}-%{version}.tar.gz
 # Source0-md5:	8648c044305fc66ee33ecc55d36f8c8b
 URL:		http://open.nit.ca/wvdial/
 BuildRequires:	libstdc++-devel
+BuildRequires:	sed >= 4.0
 BuildRequires:	wvstreams-devel
 Requires:	ppp >= 2.4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -30,6 +31,7 @@ WvDial wynegocjuje po³±czenie PPP u¿ywaj±c potrzebnych mechanizmów.
 
 %prep
 %setup -q
+sed '/LIBS +=/s/$/ -lwvbase/' -i Makefile
 
 %build
 %{__make} \
