@@ -1,0 +1,12 @@
+diff -Nur wvdial-1.54.0/Makefile wvdial-1.54.0.as_needed-fix/Makefile
+--- wvdial-1.54.0/Makefile	2003-11-14 20:46:13.000000000 +0100
++++ wvdial-1.54.0.as_needed-fix/Makefile	2006-08-02 02:55:30.000000000 +0200
+@@ -21,7 +21,7 @@
+ wvdial.a: wvdialer.o wvdialtext.o wvmodemscan.o wvpapchap.o wvdialbrain.o \
+ 	wvdialmon.o
+ 
+-LIBS += -L../wvstreams -lwvutils -lwvstreams
++LIBS += -L../wvstreams -lwvutils -lwvstreams -lwvbase
+ 
+ wvdial wvdialconf papchaptest pppmon: wvdial.a
+ 
