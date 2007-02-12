@@ -1,5 +1,5 @@
 Summary:	A heuristic autodialer for PPP connections
-Summary(pl):	Heurystyczny "autowydzwaniacz" dla po³±czeñ PPP
+Summary(pl.UTF-8):   Heurystyczny "autowydzwaniacz" dla poÅ‚Ä…czeÅ„ PPP
 Name:		wvdial
 Version:	1.54.0
 Release:	1
@@ -23,11 +23,11 @@ negotiate the PPP connection using any mechanism needed.
 Install wvdial if you need a utility to configure your modem and set
 up a PPP connection.
 
-%description -l pl
-WvDial automatycznie wyszukuje i konfiguruje modem, i mo¿e sie
-zalogowaæ do praktycznie ka¿dego serwera dostawcy us³ug internetowych
-(ISP). Potrzebujesz podaæ nazwê u¿ytkownika, has³o i numer telefonu, a
-WvDial wynegocjuje po³±czenie PPP u¿ywaj±c potrzebnych mechanizmów.
+%description -l pl.UTF-8
+WvDial automatycznie wyszukuje i konfiguruje modem, i moÅ¼e sie
+zalogowaÄ‡ do praktycznie kaÅ¼dego serwera dostawcy usÅ‚ug internetowych
+(ISP). Potrzebujesz podaÄ‡ nazwÄ™ uÅ¼ytkownika, hasÅ‚o i numer telefonu, a
+WvDial wynegocjuje poÅ‚Ä…czenie PPP uÅ¼ywajÄ…c potrzebnych mechanizmÃ³w.
 
 %prep
 %setup -q
