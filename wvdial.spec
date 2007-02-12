@@ -1,5 +1,5 @@
 Summary:	A heuristic autodialer for PPP connections
-Summary(pl.UTF-8):   Heurystyczny "autowydzwaniacz" dla połączeń PPP
+Summary(pl.UTF-8):	Heurystyczny "autowydzwaniacz" dla połączeń PPP
 Name:		wvdial
 Version:	1.54.0
 Release:	1
