@@ -5,7 +5,7 @@
  CPPFLAGS+=$(PC_CFLAGS)
  
 -PC_LIBS=$(shell pkg-config --libs libwvstreams)
-+PC_LIBS=$(shell pkg-config --libs libwvstreams) -lwvbase
++PC_LIBS=$(shell pkg-config --libs libwvstreams) -luniconf
  ifeq ($(PC_LIBS),)
   $(error WvStreams does not appear to be installed)
  endif
