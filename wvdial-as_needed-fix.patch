@@ -1,12 +1,11 @@
-diff -Nur wvdial-1.54.0/Makefile wvdial-1.54.0.as_needed-fix/Makefile
---- wvdial-1.54.0/Makefile	2003-11-14 20:46:13.000000000 +0100
-+++ wvdial-1.54.0.as_needed-fix/Makefile	2006-08-02 02:55:30.000000000 +0200
-@@ -21,7 +21,7 @@
- wvdial.a: wvdialer.o wvdialtext.o wvmodemscan.o wvpapchap.o wvdialbrain.o \
- 	wvdialmon.o
+--- wvdial-1.60/Makefile.orig	2007-07-19 22:22:26.000000000 +0100
++++ wvdial-1.60/Makefile	2008-12-27 11:16:22.000000000 +0000
+@@ -11,7 +11,7 @@
+ endif
+ CPPFLAGS+=$(PC_CFLAGS)
  
--LIBS += -L../wvstreams -lwvutils -lwvstreams
-+LIBS += -L../wvstreams -lwvutils -lwvstreams -lwvbase
- 
- wvdial wvdialconf papchaptest pppmon: wvdial.a
- 
+-PC_LIBS=$(shell pkg-config --libs libwvstreams)
++PC_LIBS=$(shell pkg-config --libs libwvstreams) -lwvbase
+ ifeq ($(PC_LIBS),)
+  $(error WvStreams does not appear to be installed)
+ endif
