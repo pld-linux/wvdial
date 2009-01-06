@@ -1,16 +1,16 @@
 Summary:	A heuristic autodialer for PPP connections
 Summary(pl.UTF-8):	Heurystyczny "autowydzwaniacz" dla połączeń PPP
 Name:		wvdial
-Version:	1.54.0
+Version:	1.60
 Release:	1
 License:	LGPL
 Group:		Networking/Daemons
-Source0:	http://open.nit.ca/download/%{name}-%{version}.tar.gz
-# Source0-md5:	8648c044305fc66ee33ecc55d36f8c8b
+Source0:	http://alumnit.ca/download/%{name}-%{version}.tar.gz
+# Source0-md5:	27fbbde89f8fd9f6e735a8efa5217fc9
 Patch0:		%{name}-as_needed-fix.patch
-URL:		http://open.nit.ca/wvdial/
+URL:		http://alumnit.ca/wiki/index.php?page=WvDial
 BuildRequires:	libstdc++-devel
-BuildRequires:	wvstreams-devel
+BuildRequires:	wvstreams-devel >= 4.5
 Requires:	ppp >= 2.4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -32,7 +32,6 @@ WvDial wynegocjuje połączenie PPP używając potrzebnych mechanizmów.
 %prep
 %setup -q
 %patch0 -p1
-
 %build
 %{__make} \
 	CXX="%{__cxx}" \
@@ -40,7 +39,7 @@ WvDial wynegocjuje połączenie PPP używając potrzebnych mechanizmów.
 	BINDIR=%{_bindir} \
 	MANDIR=%{_mandir} \
 	COPTS="%{rpmcflags}" \
-	CXXOPTS="%{rpmcflags} -fno-rtti -fno-exceptions -fno-implicit-templates" \
+	CXXOPTS="%{rpmcflags}" \
 	LDOPTS="%{rpmldflags}"
 
 %install
