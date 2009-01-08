@@ -32,6 +32,7 @@ WvDial wynegocjuje połączenie PPP używając potrzebnych mechanizmów.
 %prep
 %setup -q
 %patch0 -p1
+
 %build
 %{__make} \
 	CXX="%{__cxx}" \
