@@ -2,7 +2,7 @@ Summary:	A heuristic autodialer for PPP connections
 Summary(pl.UTF-8):	Heurystyczny "autowydzwaniacz" dla połączeń PPP
 Name:		wvdial
 Version:	1.60
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Networking/Daemons
 Source0:	http://alumnit.ca/download/%{name}-%{version}.tar.gz
