@@ -9,6 +9,7 @@ Source0:	http://wvstreams.googlecode.com/files/%{name}-%{version}.tar.gz
 # Source0-md5:	acd3b2050c9b65fff2aecda6576ee7bc
 URL:		http://alumnit.ca/wiki/index.php?page=WvDial
 BuildRequires:	libstdc++-devel
+BuildRequires:	pkgconfig
 BuildRequires:	wvstreams-devel >= 4.5
 Requires:	ppp >= 2.4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
