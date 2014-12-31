@@ -1,0 +1,11 @@
+--- wvdial-1.61/Makefile.in.orig	2008-10-22 22:01:09.000000000 +0200
++++ wvdial-1.61/Makefile.in	2014-12-31 15:52:42.812661627 +0100
+@@ -34,7 +34,7 @@
+ 	wvdialmon.o
+ 
+ wvdial wvdialconf papchaptest pppmon: \
+-  LDFLAGS+=-luniconf -lwvstreams -lwvutils -lwvbase
++  LIBS+=-luniconf -lwvstreams -lwvutils -lwvbase
+ 
+ wvdial wvdialconf papchaptest pppmon: wvdial.a
+ 

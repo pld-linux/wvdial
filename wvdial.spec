@@ -3,10 +3,11 @@ Summary(pl.UTF-8):	Heurystyczny "autowydzwaniacz" dla połączeń PPP
 Name:		wvdial
 Version:	1.61
 Release:	2
-License:	LGPL
+License:	LGPL v2
 Group:		Networking/Daemons
 Source0:	http://wvstreams.googlecode.com/files/%{name}-%{version}.tar.gz
 # Source0-md5:	acd3b2050c9b65fff2aecda6576ee7bc
+Patch0:		%{name}-link.patch
 URL:		http://alumnit.ca/wiki/index.php?page=WvDial
 BuildRequires:	libstdc++-devel
 BuildRequires:	pkgconfig
@@ -20,21 +21,28 @@ almost any ISP's server without special configuration. You need to
 input the username, password, and phone number, and then WvDial will
 negotiate the PPP connection using any mechanism needed.
 
-Install wvdial if you need a utility to configure your modem and set
-up a PPP connection.
-
 %description -l pl.UTF-8
-WvDial automatycznie wyszukuje i konfiguruje modem, i może sie
+WvDial automatycznie wyszukuje i konfiguruje modem, i potrafi się
 zalogować do praktycznie każdego serwera dostawcy usług internetowych
-(ISP). Potrzebujesz podać nazwę użytkownika, hasło i numer telefonu, a
+(ISP). Trzeba wprowadzić nazwę użytkownika, hasło i numer telefonu, a
 WvDial wynegocjuje połączenie PPP używając potrzebnych mechanizmów.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-%configure
-%{__make} -j1
+# not autoconf generated, no arguments used
+./configure
+%{__make} -j1 \
+	CC="%{__cc}" \
+	CXX="%{__cxx}" \
+	CPPOPTS="%{rpmcppflags}" \
+	COPTS="%{rpmcflags}" \
+	CXXOPTS="%{rpmcppflags}" \
+	VERBOSE=1 \
+	WVSTREAMS_LIB=. \
+	enable_debug=no
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -49,7 +57,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README CHANGES FAQ TODO MENUS
-%attr(755,root,root) %{_bindir}/*
-%{_mandir}/man?/*
-%config %{_sysconfdir}/ppp/peers/*
+%doc CHANGES ChangeLog FAQ MENUS README TODO
+%attr(755,root,root) %{_bindir}/wvdial
+%attr(755,root,root) %{_bindir}/wvdialconf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ppp/peers/wvdial
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ppp/peers/wvdial-pipe
+%{_mandir}/man1/wvdial.1*
+%{_mandir}/man1/wvdialconf.1*
+%{_mandir}/man5/wvdial.conf.5*
