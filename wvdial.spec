@@ -29,7 +29,7 @@ WvDial wynegocjuje połączenie PPP używając potrzebnych mechanizmów.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 # not autoconf generated, no arguments used
